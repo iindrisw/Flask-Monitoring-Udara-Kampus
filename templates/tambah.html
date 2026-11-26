@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<h2>Tambah Data Kualitas Udara</h2>
+
+
+<form method="POST">
+
+
+    <div class="mb-3">
+
+        <label>Lokasi</label>
+
+        <input
+            type="text"
+            name="lokasi"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>PM2.5</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="pm25"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>PM10</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="pm10"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>Suhu</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="suhu"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>Kelembaban</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="kelembaban"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>Kategori</label>
+
+        <select
+            name="kategori"
+            class="form-control"
+        >
+
+            <option value="Baik">
+
+                Baik
+
+            </option>
+
+
+            <option value="Sedang">
+
+                Sedang
+
+            </option>
+
+
+            <option value="Tidak Sehat">
+
+                Tidak Sehat
+
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button class="btn btn-success">
+
+        Simpan
+
+    </button>
+
+
+    <a href="/"
+       class="btn btn-secondary">
+
+        Kembali
+
+    </a>
+
+
+</form>
+
+
+{% endblock %}

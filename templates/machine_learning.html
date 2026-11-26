@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<h2>Machine Learning Kualitas Udara</h2>
+
+
+{% if accuracy %}
+
+<div class="alert alert-success">
+
+    <h3>
+
+        Akurasi Model:
+
+        {{ accuracy }}%
+
+    </h3>
+
+
+    <p>
+
+        Data Training:
+
+        {{ total_train }}
+
+    </p>
+
+
+    <p>
+
+        Data Testing:
+
+        {{ total_test }}
+
+    </p>
+
+
+</div>
+
+
+<h4>Feature Importance</h4>
+
+
+<table class="table table-bordered">
+
+
+    <thead class="table-success">
+
+        <tr>
+
+            <th>Variabel</th>
+
+            <th>Importance</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+
+        {% for item in feature_importance %}
+
+        <tr>
+
+            <td>
+
+                {{ item[0] }}
+
+            </td>
+
+            <td>
+
+                {{ "%.4f"|format(item[1]) }}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+
+    </tbody>
+
+
+</table>
+
+
+{% endif %}
+
+
+<hr>
+
+
+<h3>Prediksi Kualitas Udara Baru</h3>
+
+
+<form
+    method="POST"
+    action="/prediksi"
+>
+
+
+    <div class="mb-3">
+
+        <label>PM2.5</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="pm25"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>PM10</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="pm10"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>Suhu</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="suhu"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label>Kelembaban</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="kelembaban"
+            class="form-control"
+            required
+        >
+
+    </div>
+
+
+    <button class="btn btn-primary">
+
+        Prediksi
+
+    </button>
+
+
+</form>
+
+
+{% if hasil %}
+
+<div class="alert alert-warning mt-4">
+
+    <h3>
+
+        Hasil Prediksi:
+
+        {{ hasil }}
+
+    </h3>
+
+</div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<h2>Data Monitoring Kualitas Udara</h2>
+
+
+<div class="mb-3">
+
+    <a href="/tambah"
+       class="btn btn-primary">
+
+        + Tambah Data
+
+    </a>
+
+
+    <a href="/generate-data"
+       class="btn btn-success"
+       onclick="return confirm(
+       'Generate 1000 data simulasi?'
+       )">
+
+        Generate 1000 Data
+
+    </a>
+
+</div>
+
+
+<div class="table-responsive">
+
+
+<table class="table table-bordered table-striped">
+
+
+    <thead class="table-success">
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Lokasi</th>
+
+            <th>PM2.5</th>
+
+            <th>PM10</th>
+
+            <th>Suhu</th>
+
+            <th>Kelembaban</th>
+
+            <th>Kategori</th>
+
+            <th>Aksi</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+
+        {% for item in data %}
+
+        <tr>
+
+            <td>{{ item.id }}</td>
+
+            <td>{{ item.lokasi }}</td>
+
+            <td>{{ item.pm25 }}</td>
+
+            <td>{{ item.pm10 }}</td>
+
+            <td>{{ item.suhu }} °C</td>
+
+            <td>{{ item.kelembaban }} %</td>
+
+            <td>
+
+                {{ item.kategori }}
+
+            </td>
+
+
+            <td>
+
+                <a href="/edit/{{ item.id }}"
+                   class="btn btn-warning btn-sm">
+
+                    Edit
+
+                </a>
+
+
+                <a href="/hapus/{{ item.id }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm(
+                   'Yakin ingin menghapus data?'
+                   )">
+
+                    Hapus
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+
+    </tbody>
+
+
+</table>
+
+
+</div>
+
+
+{% endblock %}
